@@ -27,7 +27,9 @@ const AnalysisForm: React.FC<AnalysisFormProps> = ({ onAnalysisComplete }) => {
       return;
     }
     
-    if (!url.includes('shopify.com') && !url.includes('myshopify.com')) {
+    // Fix the URL validation to be more flexible with Shopify stores
+    // Accept URLs containing shopify.com, myshopify.com, or any domain with /products/ path
+    if (!url.includes('shopify.com') && !url.includes('myshopify.com') && !url.includes('/products/')) {
       toast({
         title: "Invalid URL",
         description: "Please enter a valid Shopify product page URL.",
