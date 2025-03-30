@@ -95,6 +95,13 @@ const AnalysisForm = ({ onAnalysisComplete }: AnalysisFormProps) => {
 
 ## Estimated CRO Impact
 **Medium-High** potential for conversion lift. The foundation is good, but several important psychological triggers for purchase are missing.
+
+## Resources
+- [The Psychology of High-Converting Shopify PDPs](https://example.com)
+- [Mobile UX Best Practices for Ecommerce](https://example.com)
+- [Using Social Proof to Boost Conversion Rates](https://example.com)
+- [Creating Urgency Without Being Pushy](https://example.com)
+- [Image Optimization Guide for Ecommerce](https://example.com)
 `;
       
       setIsLoading(false);
@@ -106,10 +113,10 @@ const AnalysisForm = ({ onAnalysisComplete }: AnalysisFormProps) => {
     <div className="pt-28 pb-16 px-6 md:px-8 min-h-screen bg-[#0F172A]">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#E2E8F0] mb-4">
             Step 1: Paste Your Product Page URL
           </h2>
-          <p className="text-[#94A3B8] text-lg">
+          <p className="text-xl text-[#E2E8F0] max-w-2xl mx-auto">
             We'll analyze your page and give you actionable CRO recommendations
           </p>
         </div>
@@ -124,13 +131,13 @@ const AnalysisForm = ({ onAnalysisComplete }: AnalysisFormProps) => {
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
                     placeholder="e.g. https://yourstore.com/products/sample-product"
-                    className="h-12 text-base bg-[#0F172A] border-[#334155] text-white placeholder:text-[#64748B] focus:border-primary"
+                    className="h-14 text-lg bg-[#0F172A] border-[#334155] text-[#E2E8F0] placeholder:text-[#64748B] focus:border-primary"
                   />
                 </div>
                 <Button 
                   type="submit"
                   disabled={isLoading}
-                  className="h-12 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white px-6 transition-all"
+                  className="h-14 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white px-8 transition-all text-lg"
                 >
                   {isLoading ? (
                     <span className="flex items-center">
@@ -139,58 +146,58 @@ const AnalysisForm = ({ onAnalysisComplete }: AnalysisFormProps) => {
                     </span>
                   ) : (
                     <span className="flex items-center">
-                      Run My Free Analysis <Search className="ml-2 h-4 w-4" />
+                      Run My Free Analysis <Search className="ml-2 h-5 w-5" />
                     </span>
                   )}
                 </Button>
               </div>
-              <div className="text-center text-sm text-[#64748B]">
+              <div className="text-center text-base text-[#94A3B8]">
                 Only works with live Shopify product pages (no staging URLs)
               </div>
             </form>
             
             {isLoading && (
-              <div className="mt-10 space-y-4">
-                <div className="h-8 w-1/3 mx-auto shimmer rounded-md"></div>
-                <div className="h-32 shimmer rounded-md"></div>
-                <div className="h-4 w-full shimmer rounded-md"></div>
-                <div className="h-4 w-5/6 shimmer rounded-md"></div>
-                <div className="h-4 w-4/6 shimmer rounded-md"></div>
+              <div className="mt-10 space-y-5">
+                <div className="h-10 w-1/3 mx-auto shimmer rounded-md"></div>
+                <div className="h-40 shimmer rounded-md"></div>
+                <div className="h-5 w-full shimmer rounded-md"></div>
+                <div className="h-5 w-5/6 shimmer rounded-md"></div>
+                <div className="h-5 w-4/6 shimmer rounded-md"></div>
               </div>
             )}
           </CardContent>
         </Card>
         
         <div className="mt-16">
-          <h3 className="text-2xl font-bold text-white mb-6 text-center">What Happens Next?</h3>
+          <h3 className="text-2xl font-bold text-[#E2E8F0] mb-8 text-center">What to Expect Next</h3>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-[#1E293B] p-6 rounded-lg border border-[#334155]">
-              <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-5">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M9 5H7C5.89543 5 5 5.89543 5 7V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7C19 5.89543 18.1046 5 17 5H15M9 5C9 6.10457 9.89543 7 11 7H13C14.1046 7 15 6.10457 15 5M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5" stroke="#6366F1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M9 14L11 16L15 12" stroke="#6366F1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h4 className="text-white font-medium mb-2">10-Point CRO Analysis</h4>
-              <p className="text-[#94A3B8] text-sm">We run a comprehensive audit on your product page layout, copy, and UX</p>
+              <h4 className="text-[#E2E8F0] text-lg font-medium mb-3">AutoCRO analyzes 8 key CRO dimensions</h4>
+              <p className="text-[#E2E8F0] text-base">From first impressions to mobile experience, we look at every aspect of your product page</p>
             </div>
             <div className="bg-[#1E293B] p-6 rounded-lg border border-[#334155]">
-              <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-5">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 8V12L15 15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#6366F1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h4 className="text-white font-medium mb-2">Prioritized Suggestions</h4>
-              <p className="text-[#94A3B8] text-sm">You'll get actionable recommendations in seconds, in order of impact</p>
+              <h4 className="text-[#E2E8F0] text-lg font-medium mb-3">You'll see Quick Wins, UX feedback, and estimated impact</h4>
+              <p className="text-[#E2E8F0] text-base">Get actionable recommendations in seconds, ordered by potential impact</p>
             </div>
             <div className="bg-[#1E293B] p-6 rounded-lg border border-[#334155]">
-              <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-5">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#6366F1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h4 className="text-white font-medium mb-2">No Fluff, Just Insights</h4>
-              <p className="text-[#94A3B8] text-sm">No signup, no install, no technical jargon—just clear, actionable insights</p>
+              <h4 className="text-[#E2E8F0] text-lg font-medium mb-3">Some results are blurred unless you upgrade</h4>
+              <p className="text-[#E2E8F0] text-base">Premium insights like Quick Wins and Deeper Improvements are available in our Pro plan</p>
             </div>
           </div>
         </div>
