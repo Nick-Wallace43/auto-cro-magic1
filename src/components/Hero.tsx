@@ -1,9 +1,7 @@
 
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
 
-const Hero = ({ onStartAnalysis }: { onStartAnalysis: () => void }) => {
+const Hero = () => {
   return (
     <div className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -14,7 +12,7 @@ const Hero = ({ onStartAnalysis }: { onStartAnalysis: () => void }) => {
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0 bg-[#0F172A]/80"></div>
+        <div className="absolute inset-0 bg-[#111827]/80"></div>
       </div>
       
       {/* Content Overlay */}
@@ -25,13 +23,6 @@ const Hero = ({ onStartAnalysis }: { onStartAnalysis: () => void }) => {
         <p className="text-xl md:text-2xl text-[#E2E8F0] mb-10 leading-relaxed max-w-3xl mx-auto">
           Get instant, expert feedback on your PDP without a CRO agency.
         </p>
-        <Button 
-          onClick={onStartAnalysis}
-          size="lg" 
-          className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 hover:shadow-lg transition-all duration-300 text-white px-10 py-7 h-auto text-xl font-medium rounded-full"
-        >
-          Start Free Analysis <ArrowRight className="ml-2 h-6 w-6" />
-        </Button>
       </div>
     </div>
   );

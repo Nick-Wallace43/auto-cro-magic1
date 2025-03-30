@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import CTASection from '@/components/CTASection';
 import HomeFeatures from '@/components/HomeFeatures';
 import AnalysisForm from '@/components/AnalysisForm';
 import ResultsDisplay from '@/components/ResultsDisplay';
@@ -31,28 +32,13 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#0F172A]">
+    <div className="min-h-screen flex flex-col bg-[#111827]">
       <Navbar />
 
       {currentStep === 'hero' && (
         <>
-          <Hero onStartAnalysis={handleStartAnalysis} />
-          
-          {/* New CTA Block */}
-          <div className="py-16 px-6 md:px-8 bg-[#0F172A] text-center">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#E2E8F0] mb-8">
-                Ready to Optimize Your Product Page?
-              </h2>
-              <button
-                onClick={handleStartAnalysis}
-                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white text-lg md:text-xl font-medium px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all"
-              >
-                Start Free Analysis
-              </button>
-            </div>
-          </div>
-          
+          <Hero />
+          <CTASection onStartAnalysis={handleStartAnalysis} />
           <HomeFeatures />
         </>
       )}

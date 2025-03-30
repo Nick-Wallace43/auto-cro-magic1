@@ -43,7 +43,7 @@
   }
   
   body {
-    @apply bg-[#0F172A] text-[#E2E8F0] antialiased;
+    @apply bg-[#111827] text-[#E2E8F0] antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   

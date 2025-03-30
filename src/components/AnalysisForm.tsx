@@ -110,7 +110,7 @@ const AnalysisForm = ({ onAnalysisComplete }: AnalysisFormProps) => {
   };
 
   return (
-    <div className="pt-28 pb-16 px-6 md:px-8 min-h-screen bg-[#0F172A]">
+    <div className="pt-28 pb-16 px-6 md:px-8 min-h-screen bg-[#111827]">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-[#E2E8F0] mb-4">
@@ -131,13 +131,13 @@ const AnalysisForm = ({ onAnalysisComplete }: AnalysisFormProps) => {
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
                     placeholder="e.g. https://yourstore.com/products/sample-product"
-                    className="h-14 text-lg bg-[#0F172A] border-[#334155] text-[#E2E8F0] placeholder:text-[#64748B] focus:border-primary"
+                    className="h-14 text-lg bg-[#111827] border-[#334155] text-[#E2E8F0] placeholder:text-[#64748B] focus:border-primary"
                   />
                 </div>
                 <Button 
                   type="submit"
                   disabled={isLoading}
-                  className="h-14 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white px-8 transition-all text-lg"
+                  className="h-14 bg-primary hover:bg-primary/90 text-white px-8 transition-all text-lg"
                 >
                   {isLoading ? (
                     <span className="flex items-center">
@@ -151,7 +151,7 @@ const AnalysisForm = ({ onAnalysisComplete }: AnalysisFormProps) => {
                   )}
                 </Button>
               </div>
-              <div className="text-center text-base text-[#94A3B8]">
+              <div className="text-center text-lg text-[#94A3B8]">
                 Only works with live Shopify product pages (no staging URLs)
               </div>
             </form>
@@ -179,7 +179,7 @@ const AnalysisForm = ({ onAnalysisComplete }: AnalysisFormProps) => {
                 </svg>
               </div>
               <h4 className="text-[#E2E8F0] text-lg font-medium mb-3">AutoCRO analyzes 8 key CRO dimensions</h4>
-              <p className="text-[#E2E8F0] text-base">From first impressions to mobile experience, we look at every aspect of your product page</p>
+              <p className="text-[#E2E8F0] text-lg">From first impressions to mobile experience, we look at every aspect of your product page</p>
             </div>
             <div className="bg-[#1E293B] p-6 rounded-lg border border-[#334155]">
               <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-5">
@@ -188,7 +188,7 @@ const AnalysisForm = ({ onAnalysisComplete }: AnalysisFormProps) => {
                 </svg>
               </div>
               <h4 className="text-[#E2E8F0] text-lg font-medium mb-3">You'll see Quick Wins, UX feedback, and estimated impact</h4>
-              <p className="text-[#E2E8F0] text-base">Get actionable recommendations in seconds, ordered by potential impact</p>
+              <p className="text-[#E2E8F0] text-lg">Get actionable recommendations in seconds, ordered by potential impact</p>
             </div>
             <div className="bg-[#1E293B] p-6 rounded-lg border border-[#334155]">
               <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-5">
@@ -197,7 +197,7 @@ const AnalysisForm = ({ onAnalysisComplete }: AnalysisFormProps) => {
                 </svg>
               </div>
               <h4 className="text-[#E2E8F0] text-lg font-medium mb-3">Some results are blurred unless you upgrade</h4>
-              <p className="text-[#E2E8F0] text-base">Premium insights like Quick Wins and Deeper Improvements are available in our Pro plan</p>
+              <p className="text-[#E2E8F0] text-lg">Premium insights like Quick Wins and Deeper Improvements are available in our Pro plan</p>
             </div>
           </div>
         </div>
