@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import HomeFeatures from '@/components/HomeFeatures';
 import AnalysisForm from '@/components/AnalysisForm';
 import ResultsDisplay from '@/components/ResultsDisplay';
 import Footer from '@/components/Footer';
@@ -30,11 +31,14 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50">
+    <div className="min-h-screen flex flex-col bg-[#0F172A]">
       <Navbar />
 
       {currentStep === 'hero' && (
-        <Hero onStartAnalysis={handleStartAnalysis} />
+        <>
+          <Hero onStartAnalysis={handleStartAnalysis} />
+          <HomeFeatures />
+        </>
       )}
 
       {currentStep === 'analysis' && (
@@ -45,7 +49,6 @@ const Index = () => {
         <ResultsDisplay analysisResult={analysisResult} onReset={handleReset} />
       )}
 
-      <div className="flex-grow"></div>
       <Footer />
     </div>
   );

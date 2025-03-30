@@ -26,32 +26,32 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: '#6C63FF',
-					foreground: 'hsl(var(--primary-foreground))'
+					DEFAULT: '#6366F1', // Indigo
+					foreground: '#FFFFFF'
 				},
 				secondary: {
-					DEFAULT: '#3A86FF',
-					foreground: 'hsl(var(--secondary-foreground))'
+					DEFAULT: '#0EA5E9', // Sky Blue
+					foreground: '#FFFFFF'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
 				},
 				muted: {
-					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))'
+					DEFAULT: '#1E293B', // Darker muted for dark theme
+					foreground: '#94A3B8' // Subtle gray text
 				},
 				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
+					DEFAULT: '#38BDF8', // Lighter blue accent
+					foreground: '#FFFFFF'
 				},
 				popover: {
-					DEFAULT: 'hsl(var(--popover))',
-					foreground: 'hsl(var(--popover-foreground))'
+					DEFAULT: '#0F172A', // Dark popover background
+					foreground: '#F8FAFC'
 				},
 				card: {
-					DEFAULT: 'hsl(var(--card))',
-					foreground: 'hsl(var(--card-foreground))'
+					DEFAULT: '#1E293B', // Dark card background
+					foreground: '#F8FAFC'
 				},
 				success: {
 					DEFAULT: '#10B981',
@@ -66,6 +66,9 @@ export default {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)',
+			},
+			fontFamily: {
+				sans: ['Inter', 'system-ui', 'sans-serif'],
 			},
 			keyframes: {
 				"accordion-down": {
@@ -83,16 +86,23 @@ export default {
 				"pulse-light": {
 					"0%, 100%": { opacity: "1" },
 					"50%": { opacity: "0.7" }
+				},
+				"shimmer": {
+					"0%": { backgroundPosition: "-468px 0" },
+					"100%": { backgroundPosition: "468px 0" }
 				}
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
 				"fade-in": "fade-in 0.3s ease-out",
-				"pulse-light": "pulse-light 2s cubic-bezier(0.4, 0, 0.6, 1) infinite"
+				"pulse-light": "pulse-light 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+				"shimmer": "shimmer 1.5s infinite linear"
 			},
 			backgroundImage: {
-				'hero-pattern': 'linear-gradient(to right, rgba(108, 99, 255, 0.1), rgba(58, 134, 255, 0.1))'
+				'hero-gradient': 'linear-gradient(to right, rgba(99, 102, 241, 0.1), rgba(14, 165, 233, 0.1))',
+				'cta-gradient': 'linear-gradient(to right, #6366F1, #0EA5E9)',
+				'card-gradient': 'linear-gradient(to bottom right, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9))'
 			}
 		},
 	},
