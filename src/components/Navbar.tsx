@@ -1,172 +1,139 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Logo from './Logo';
+import { Link, useLocation } from 'react-router-dom';
+import Logo from '@/components/Logo';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { z } from 'zod';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Menu } from 'lucide-react';
-
-const navItems = [
-  { name: 'Features', href: '#features' },
-  { name: 'Pricing', href: '/pricing' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
-];
-
-const loginSchema = z.object({
-  email: z.string().email({ message: "Please enter a valid email address" }),
-  password: z.string().min(6, { message: "Password must be at least 6 characters" }),
-});
+import { Menu, X } from 'lucide-react';
+import LoginModal from '@/components/LoginModal';
+import SignupModal from '@/components/SignupModal';
 
 const Navbar = () => {
-  const [loginOpen, setLoginOpen] = useState(false);
-  
-  const form = useForm<z.infer<typeof loginSchema>>({
-    resolver: zodResolver(loginSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isSignupOpen, setIsSignupOpen] = useState(false);
+  const location = useLocation();
 
-  const onLoginSubmit = (values: z.infer<typeof loginSchema>) => {
-    console.log(values);
-    // Handle login logic here
-    setLoginOpen(false);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  
+  const navItems = [
+    { label: 'Features', path: '/' },
+    { label: 'Pricing', path: '/pricing' },
+    { label: 'Blog', path: '/blog' },
+    { label: 'About', path: '/about' },
+    { label: 'Contact', path: '/contact' },
+  ];
+
+  const isActive = (path: string) => {
+    return location.pathname === path;
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 py-5 px-6 md:px-8 bg-[#111827]/95 backdrop-blur-sm border-b border-[#1E293B]">
+    <nav className="bg-[#111827] w-full px-6 md:px-8 py-4 border-b border-gray-800">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link to="/">
+        <Link to="/" className="flex items-center">
           <Logo />
         </Link>
-        
-        <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              to={item.href}
-              className="text-[#E2E8F0] hover:text-white transition-colors text-lg font-medium"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
-        
-        <div className="hidden md:flex items-center gap-4">
-          <Dialog open={loginOpen} onOpenChange={setLoginOpen}>
-            <DialogTrigger asChild>
-              <Button 
-                variant="outline" 
-                className="border-primary text-[#E2E8F0] hover:text-white hover:bg-primary/20 transition-colors text-lg h-12"
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-1">
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                to={item.path}
+                className={`px-4 py-2 rounded-md text-lg font-medium transition-colors ${
+                  isActive(item.path)
+                    ? 'text-primary'
+                    : 'text-[#E2E8F0] hover:text-primary'
+                }`}
               >
-                Login
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="bg-[#1E293B] border border-[#334155] text-[#E2E8F0] sm:max-w-md">
-              <DialogHeader>
-                <DialogTitle className="text-2xl font-bold text-[#E2E8F0]">Login to AutoCRO</DialogTitle>
-              </DialogHeader>
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onLoginSubmit)} className="space-y-6 mt-4">
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-lg text-[#E2E8F0]">Email</FormLabel>
-                        <FormControl>
-                          <Input 
-                            placeholder="you@example.com" 
-                            className="text-lg bg-[#111827] border-[#334155] text-[#E2E8F0] h-12" 
-                            {...field} 
-                          />
-                        </FormControl>
-                        <FormMessage className="text-[#F87171]" />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="password"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-lg text-[#E2E8F0]">Password</FormLabel>
-                        <FormControl>
-                          <Input 
-                            type="password" 
-                            placeholder="••••••••" 
-                            className="text-lg bg-[#111827] border-[#334155] text-[#E2E8F0] h-12" 
-                            {...field} 
-                          />
-                        </FormControl>
-                        <FormMessage className="text-[#F87171]" />
-                      </FormItem>
-                    )}
-                  />
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-primary hover:bg-primary/90 text-white text-lg h-12"
-                  >
-                    Login
-                  </Button>
-                </form>
-              </Form>
-            </DialogContent>
-          </Dialog>
-          
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Auth Buttons */}
+        <div className="hidden md:flex items-center space-x-4">
           <Button 
-            className="bg-[#E2E8F0] text-[#111827] hover:bg-white transition-colors text-lg h-12"
+            variant="outline"
+            className="text-lg py-6 border-primary text-primary hover:bg-primary/10"
+            onClick={() => setIsLoginOpen(true)}
+          >
+            Login
+          </Button>
+          <Button 
+            className="text-lg py-6 bg-primary hover:bg-primary/90 text-white"
+            onClick={() => setIsSignupOpen(true)}
           >
             Sign Up
           </Button>
         </div>
-        
-        {/* Mobile menu button */}
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button 
-              variant="ghost" 
-              className="md:hidden text-[#E2E8F0] hover:text-white hover:bg-[#1E293B]/50"
-            >
-              <Menu className="h-6 w-6" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent className="bg-[#111827] border-l border-[#1E293B] text-[#E2E8F0]">
-            <div className="flex flex-col space-y-6 mt-8">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="text-[#E2E8F0] hover:text-white transition-colors text-xl font-medium"
-                >
-                  {item.name}
-                </Link>
-              ))}
+
+        {/* Mobile Menu Button */}
+        <button 
+          className="md:hidden p-2 rounded-md text-[#E2E8F0] hover:text-primary focus:outline-none"
+          onClick={toggleMenu}
+        >
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {/* Mobile Navigation */}
+      {isMenuOpen && (
+        <div className="md:hidden absolute top-16 left-0 right-0 bg-[#111827] border-b border-gray-800 z-50">
+          <div className="px-6 py-6 space-y-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                to={item.path}
+                className={`block px-3 py-3 rounded-md text-lg font-medium ${
+                  isActive(item.path)
+                    ? 'text-primary'
+                    : 'text-[#E2E8F0] hover:text-primary'
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <div className="pt-4 space-y-3">
               <Button 
-                variant="outline" 
-                className="border-primary text-[#E2E8F0] hover:text-white hover:bg-primary/20 transition-colors text-lg mt-4 w-full"
-                onClick={() => setLoginOpen(true)}
+                variant="outline"
+                className="w-full justify-center text-lg py-6 border-primary text-primary hover:bg-primary/10"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  setIsLoginOpen(true);
+                }}
               >
                 Login
               </Button>
               <Button 
-                className="bg-[#E2E8F0] text-[#111827] hover:bg-white transition-colors text-lg w-full"
+                className="w-full justify-center text-lg py-6 bg-primary hover:bg-primary/90 text-white"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  setIsSignupOpen(true);
+                }}
               >
                 Sign Up
               </Button>
             </div>
-          </SheetContent>
-        </Sheet>
-      </div>
+          </div>
+        </div>
+      )}
+
+      {/* Auth Modals */}
+      <LoginModal 
+        isOpen={isLoginOpen} 
+        onClose={() => setIsLoginOpen(false)} 
+        onOpenSignup={() => setIsSignupOpen(true)} 
+      />
+      
+      <SignupModal 
+        isOpen={isSignupOpen} 
+        onClose={() => setIsSignupOpen(false)} 
+        onOpenLogin={() => setIsLoginOpen(true)} 
+      />
     </nav>
   );
 };
