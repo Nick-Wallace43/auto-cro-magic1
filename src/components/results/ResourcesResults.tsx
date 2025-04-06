@@ -8,12 +8,18 @@ interface ResourcesResultsProps {
   analysisType: string;
 }
 
+interface Resource {
+  title: string;
+  url: string;
+  category: string;
+}
+
 const ResourcesResults: React.FC<ResourcesResultsProps> = ({ analysisType }) => {
   // Resources are blurred for free users
   const isProUser = false; // This would typically come from user state
   
   // Define resource links based on analysis type
-  const getResources = () => {
+  const getResources = (): Resource[] => {
     if (analysisType === 'product') {
       return [
         { 
@@ -91,7 +97,7 @@ const ResourcesResults: React.FC<ResourcesResultsProps> = ({ analysisType }) => 
   const resources = getResources();
   
   // Group resources by category
-  const groupedResources = resources.reduce((acc, resource) => {
+  const groupedResources: Record<string, Resource[]> = resources.reduce((acc: Record<string, Resource[]>, resource) => {
     acc[resource.category] = acc[resource.category] || [];
     acc[resource.category].push(resource);
     return acc;
@@ -112,7 +118,7 @@ const ResourcesResults: React.FC<ResourcesResultsProps> = ({ analysisType }) => 
             <div key={category} className="space-y-3">
               <h3 className="text-xl font-medium text-[#E2E8F0]">{category}</h3>
               <ul className="space-y-3">
-                {categoryResources.map((resource: any, index: number) => (
+                {categoryResources.map((resource, index) => (
                   <li key={index} className="flex items-center">
                     <ExternalLink className="h-5 w-5 text-primary shrink-0 mr-2" />
                     <a 

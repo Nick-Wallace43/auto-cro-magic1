@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,15 +6,15 @@ import { ArrowLeft, ExternalLink, Download, Mail, PlusCircle, Sparkles } from 'l
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { analysisTypes } from '@/lib/analysis-types';
 import { Skeleton } from '@/components/ui/skeleton';
-import { SEOResults } from './results/SEOResults';
-import { CROResults } from './results/CROResults';
-import { PerformanceResults } from './results/PerformanceResults';
-import { CopywritingResults } from './results/CopywritingResults';
-import { CompetitiveResults } from './results/CompetitiveResults';
-import { QuickWinsResults } from './results/QuickWinsResults';
-import { DeeperImprovementsResults } from './results/DeeperImprovementsResults';
-import { ImpactResults } from './results/ImpactResults';
-import { ResourcesResults } from './results/ResourcesResults';
+import SEOResults from './results/SEOResults';
+import CROResults from './results/CROResults';
+import PerformanceResults from './results/PerformanceResults';
+import CopywritingResults from './results/CopywritingResults';
+import CompetitiveResults from './results/CompetitiveResults';
+import QuickWinsResults from './results/QuickWinsResults';
+import DeeperImprovementsResults from './results/DeeperImprovementsResults';
+import ImpactResults from './results/ImpactResults';
+import ResourcesResults from './results/ResourcesResults';
 
 interface ResultsDisplayProps {
   analysisResult: string;
@@ -31,7 +30,6 @@ const ResultsDisplay: React.FC<ResultsDisplayProps> = ({
   const [activeTab, setActiveTab] = useState("cro");
   const [emailInput, setEmailInput] = useState("");
   
-  // Find the current analysis type
   const currentAnalysisType = analysisTypes.find(type => type.id === analysisType) || analysisTypes[0];
 
   return (
