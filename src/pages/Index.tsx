@@ -11,6 +11,7 @@ import Footer from '@/components/Footer';
 const Index = () => {
   const [currentStep, setCurrentStep] = useState<'hero' | 'analysis' | 'results'>('hero');
   const [analysisResult, setAnalysisResult] = useState<string>('');
+  const [analysisType, setAnalysisType] = useState<string>('product');
 
   const handleStartAnalysis = () => {
     setCurrentStep('analysis');
@@ -18,8 +19,9 @@ const Index = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleAnalysisComplete = (results: string) => {
+  const handleAnalysisComplete = (results: string, type: string) => {
     setAnalysisResult(results);
+    setAnalysisType(type);
     setCurrentStep('results');
     // Scroll to results
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -48,7 +50,11 @@ const Index = () => {
       )}
 
       {currentStep === 'results' && (
-        <ResultsDisplay analysisResult={analysisResult} onReset={handleReset} />
+        <ResultsDisplay 
+          analysisResult={analysisResult} 
+          analysisType={analysisType}
+          onReset={handleReset} 
+        />
       )}
 
       <Footer />
