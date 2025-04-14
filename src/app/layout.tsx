@@ -4,10 +4,9 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Providers } from './providers';
 
 const inter = Inter({ subsets: ['latin'] });
-const queryClient = new QueryClient();
 
 export const metadata: Metadata = {
   title: 'AutoCRO - Automated Conversion Rate Optimization',
@@ -22,13 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <QueryClientProvider client={queryClient}>
+        <Providers>
           <TooltipProvider>
             {children}
             <Toaster />
             <Sonner />
           </TooltipProvider>
-        </QueryClientProvider>
+        </Providers>
       </body>
     </html>
   );
