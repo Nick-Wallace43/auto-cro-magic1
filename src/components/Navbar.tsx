@@ -1,126 +1,165 @@
+'use client';
 
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import Logo from '@/components/Logo';
-import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import LoginModal from '@/components/LoginModal';
 import SignupModal from '@/components/SignupModal';
 
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSignupOpen, setIsSignupOpen] = useState(false);
-  const location = useLocation();
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  
-  const navItems = [
-    { label: 'Features', path: '/' },
-    { label: 'Pricing', path: '/pricing' },
-    { label: 'Blog', path: '/blog' },
-    { label: 'About', path: '/about' },
-    { label: 'Contact', path: '/contact' },
-  ];
-
-  const isActive = (path: string) => {
-    return location.pathname === path;
-  };
+  const isActive = (path: string) => pathname === path;
 
   return (
-    <nav className="bg-[#111827] w-full px-6 md:px-8 py-4 border-b border-gray-800">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link to="/" className="flex items-center">
-          <Logo />
-        </Link>
-
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-1">
-          <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
+    <nav className="bg-white shadow-sm">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between h-16">
+          <div className="flex">
+            <div className="flex-shrink-0 flex items-center">
+              <Link href="/" className="text-xl font-bold text-gray-900">
+                AutoCRO
+              </Link>
+            </div>
+            <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
               <Link
-                key={item.label}
-                to={item.path}
-                className={`px-4 py-2 rounded-md text-lg font-medium transition-colors ${
-                  isActive(item.path)
-                    ? 'text-primary'
-                    : 'text-[#E2E8F0] hover:text-primary'
+                href="/"
+                className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
+                  isActive('/')
+                    ? 'border-blue-500 text-gray-900'
+                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
                 }`}
               >
-                {item.label}
+                Home
               </Link>
-            ))}
-          </div>
-        </div>
-
-        {/* Desktop Auth Buttons */}
-        <div className="hidden md:flex items-center space-x-4">
-          <Button 
-            variant="outline"
-            className="text-lg py-6 border-primary text-primary hover:bg-primary/10"
-            onClick={() => setIsLoginOpen(true)}
-          >
-            Login
-          </Button>
-          <Button 
-            className="text-lg py-6 bg-primary hover:bg-primary/90 text-white"
-            onClick={() => setIsSignupOpen(true)}
-          >
-            Sign Up
-          </Button>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden p-2 rounded-md text-[#E2E8F0] hover:text-primary focus:outline-none"
-          onClick={toggleMenu}
-        >
-          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
-
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 bg-[#111827] border-b border-gray-800 z-50">
-          <div className="px-6 py-6 space-y-4">
-            {navItems.map((item) => (
               <Link
-                key={item.label}
-                to={item.path}
-                className={`block px-3 py-3 rounded-md text-lg font-medium ${
-                  isActive(item.path)
-                    ? 'text-primary'
-                    : 'text-[#E2E8F0] hover:text-primary'
+                href="/about"
+                className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
+                  isActive('/about')
+                    ? 'border-blue-500 text-gray-900'
+                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
                 }`}
-                onClick={() => setIsMenuOpen(false)}
               >
-                {item.label}
+                About
               </Link>
-            ))}
-            <div className="pt-4 space-y-3">
-              <Button 
-                variant="outline"
-                className="w-full justify-center text-lg py-6 border-primary text-primary hover:bg-primary/10"
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  setIsLoginOpen(true);
-                }}
+              <Link
+                href="/blog"
+                className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
+                  isActive('/blog')
+                    ? 'border-blue-500 text-gray-900'
+                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
+                }`}
               >
-                Login
-              </Button>
-              <Button 
-                className="w-full justify-center text-lg py-6 bg-primary hover:bg-primary/90 text-white"
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  setIsSignupOpen(true);
-                }}
+                Blog
+              </Link>
+              <Link
+                href="/pricing"
+                className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
+                  isActive('/pricing')
+                    ? 'border-blue-500 text-gray-900'
+                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
+                }`}
               >
-                Sign Up
-              </Button>
+                Pricing
+              </Link>
+              <Link
+                href="/contact"
+                className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
+                  isActive('/contact')
+                    ? 'border-blue-500 text-gray-900'
+                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
+                }`}
+              >
+                Contact
+              </Link>
             </div>
           </div>
+          <div className="-mr-2 flex items-center sm:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+            >
+              <span className="sr-only">Open main menu</span>
+              {isOpen ? (
+                <X className="block h-6 w-6" aria-hidden="true" />
+              ) : (
+                <Menu className="block h-6 w-6" aria-hidden="true" />
+              )}
+            </button>
+          </div>
         </div>
-      )}
+      </div>
+
+      {/* Mobile menu */}
+      <div className={`sm:hidden ${isOpen ? 'block' : 'hidden'}`}>
+        <div className="pt-2 pb-3 space-y-1">
+          <Link
+            href="/"
+            className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
+              isActive('/')
+                ? 'bg-blue-50 border-blue-500 text-blue-700'
+                : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
+            }`}
+          >
+            Home
+          </Link>
+          <Link
+            href="/about"
+            className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
+              isActive('/about')
+                ? 'bg-blue-50 border-blue-500 text-blue-700'
+                : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
+            }`}
+          >
+            About
+          </Link>
+          <Link
+            href="/blog"
+            className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
+              isActive('/blog')
+                ? 'bg-blue-50 border-blue-500 text-blue-700'
+                : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
+            }`}
+          >
+            Blog
+          </Link>
+          <Link
+            href="/pricing"
+            className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
+              isActive('/pricing')
+                ? 'bg-blue-50 border-blue-500 text-blue-700'
+                : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
+            }`}
+          >
+            Pricing
+          </Link>
+          <Link
+            href="/contact"
+            className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
+              isActive('/contact')
+                ? 'bg-blue-50 border-blue-500 text-blue-700'
+                : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
+            }`}
+          >
+            Contact
+          </Link>
+        </div>
+        <div className="pt-4 space-y-3">
+          <button 
+            className="w-full justify-center text-lg py-6 bg-primary hover:bg-primary/90 text-white"
+            onClick={() => {
+              setIsOpen(false);
+              setIsSignupOpen(true);
+            }}
+          >
+            Sign Up
+          </button>
+        </div>
+      </div>
 
       {/* Auth Modals */}
       <LoginModal 
@@ -136,6 +175,4 @@ const Navbar = () => {
       />
     </nav>
   );
-};
-
-export default Navbar;
+}
