@@ -1,9 +1,3 @@
-'use client';
-
-import React from 'react';
-
-export const dynamic = 'force-dynamic';
-
 export default function Pricing() {
   return (
     <main className="min-h-screen bg-gray-50">
@@ -16,7 +10,7 @@ export default function Pricing() {
         <div className="prose max-w-none">
           <h2>Choose Your Plan</h2>
           <p>
-            Select the plan that best fits your needs and start optimizing your conversion rates today.
+            Select the plan that best fits your needs. All plans include access to our core features.
           </p>
         </div>
       </main>

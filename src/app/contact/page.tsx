@@ -1,9 +1,3 @@
-'use client';
-
-import React from 'react';
-
-export const dynamic = 'force-dynamic';
-
 export default function Contact() {
   return (
     <main className="min-h-screen bg-gray-50">
@@ -16,7 +10,7 @@ export default function Contact() {
         <div className="prose max-w-none">
           <h2>Get in Touch</h2>
           <p>
-            Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+            Have questions about our services? We'd love to hear from you.
           </p>
         </div>
       </main>

@@ -1,9 +1,3 @@
-'use client';
-
-import React from 'react';
-
-export const dynamic = 'force-dynamic';
-
 export default function About() {
   return (
     <main className="min-h-screen bg-gray-50">
@@ -14,10 +8,9 @@ export default function About() {
       </header>
       <main className="container mx-auto py-8">
         <div className="prose max-w-none">
-          <h2>Our Story</h2>
+          <h2>Our Mission</h2>
           <p>
-            We are a team of passionate individuals dedicated to creating innovative solutions
-            that make a difference in people's lives.
+            We are dedicated to helping businesses optimize their conversion rates through data-driven insights and automation.
           </p>
         </div>
       </main>
