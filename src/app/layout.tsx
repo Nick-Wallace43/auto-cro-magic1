@@ -10,8 +10,8 @@ const inter = Inter({ subsets: ['latin'] });
 const queryClient = new QueryClient();
 
 export const metadata: Metadata = {
-  title: 'AutoCRO - AI-Powered Shopify Product Page Audit',
-  description: 'Analyze and optimize your Shopify product pages with AI-powered insights',
+  title: 'AutoCRO - Automated Conversion Rate Optimization',
+  description: 'Automated conversion rate optimization for your website',
 };
 
 export default function RootLayout({
@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={inter.className}>
         <QueryClientProvider client={queryClient}>
           <TooltipProvider>
             {children}
