@@ -1,5 +1,7 @@
 'use client';
 
+import React from 'react';
+
 export default function Blog() {
   return (
     <main className="min-h-screen bg-gray-50">
