@@ -2,6 +2,8 @@
 
 import { PageAnalyzer } from '@/components/PageAnalyzer';
 
+export const dynamic = 'force-dynamic';
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50">
